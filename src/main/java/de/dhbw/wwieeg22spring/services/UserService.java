@@ -35,4 +35,16 @@ public class UserService {
     public void deleteUser(Long id) {
         usersById.remove(id);
     }
+
+    public User modifyUser(Long id, String firstName, String lastName) {
+        User user = usersById.get(id);
+        if(null != firstName){
+            user.setFirstName(firstName);
+        }
+
+        if(null != lastName){
+            user.setLastName(lastName);
+        }
+        return user;
+    }
 }

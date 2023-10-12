@@ -38,10 +38,19 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/users")
-    public void deleteUser(@RequestParam(value = "id", required = true) Long id){
+    @DeleteMapping("/users/{userid}")
+    public void deleteUser(@PathVariable(value = "userid") Long id){
         userService.deleteUser(id);
     }
+
+
+    @PutMapping("/users/{userid}")
+    public User modifyUser(@PathVariable(value = "userid") Long id,
+                           @RequestParam(value = "firstName", required = false) String firstName,
+                           @RequestParam(value = "lastName", required = false) String lastName){
+        return userService.modifyUser(id, firstName, lastName);
+    }
+
 
 
 
